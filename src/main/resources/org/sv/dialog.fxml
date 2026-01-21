@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="400.0" prefWidth="600.0" styleClass="dialog" stylesheets="@style.css"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.sv.controllers.DialogController">
+    <VBox prefHeight="200.0" prefWidth="400.0">
+        <children>
+            <Label fx:id="titulo" styleClass="header" text="lorep ipsum"/>
+
+            <Label fx:id="message" styleClass="message" text="message message"/>
+
+            <Button alignment="CENTER_RIGHT" styleClass="action-button" text="Aceptar"/>
+        </children>
+    </VBox>
+
+</HBox>

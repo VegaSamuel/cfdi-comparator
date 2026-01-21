@@ -1,11 +1,13 @@
 package org.sv.models;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class ExcelExcelenciaModel {
     String uuid;
     String concepto;
     String descripcion;
+    LocalDate fecha;
     double total;
     String iglesia;
 
@@ -22,10 +24,11 @@ public class ExcelExcelenciaModel {
      * @param total Total de la factura.
      * @param iglesia Iglesia que uso la factura.
      */
-    public ExcelExcelenciaModel(String uuid, String concepto, String descripcion, double total, String iglesia) {
+    public ExcelExcelenciaModel(String uuid, String concepto, String descripcion, LocalDate fecha, double total, String iglesia) {
         this.uuid = uuid;
         this.concepto = concepto;
         this.descripcion = descripcion;
+        this.fecha = fecha;
         this.total = total;
         this.iglesia = iglesia;
     }
@@ -53,6 +56,14 @@ public class ExcelExcelenciaModel {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public double getTotal() {
@@ -89,6 +100,7 @@ public class ExcelExcelenciaModel {
                 "uuid='" + uuid + '\'' +
                 ", concepto='" + concepto + '\'' +
                 ", descripcion='" + descripcion + '\'' +
+                ", fecha =" + fecha + '\'' +
                 ", total=" + total + '\'' +
                 ", iglesia=" + iglesia +
                 '}';

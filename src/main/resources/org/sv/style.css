@@ -3,6 +3,12 @@
     -fx-padding: 20;
 }
 
+.dialog {
+    -fx-background-color: #172340;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+}
+
 .drop-zone {
     -fx-border-color: #94a3b8;
     -fx-border-style: dashed;
@@ -46,5 +52,10 @@
 .header {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.message {
+    -fx-padding: 10;
     -fx-text-fill: white;
 }

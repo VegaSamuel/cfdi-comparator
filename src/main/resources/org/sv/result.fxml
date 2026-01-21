@@ -3,11 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600" prefWidth="400" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sv.controllers.ResultController">
+<VBox prefHeight="600" prefWidth="400" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sv.controllers.ResultController">
 
-          <Label styleClass="header" text="Facturas Encontradas" />
+    <Label styleClass="header" text="Facturas Encontradas"/>
 
-          <Accordion fx:id="accordion" prefHeight="0.0" prefWidth="360.0" />
+    <Accordion fx:id="accordion" prefHeight="0.0" prefWidth="360.0"/>
 
-          <Button alignment="CENTER" styleClass="action-button" text="Mostrar irregularidades" />
+    <Button alignment="CENTER" styleClass="action-button" text="Mostrar irregularidades"/>
 </VBox>

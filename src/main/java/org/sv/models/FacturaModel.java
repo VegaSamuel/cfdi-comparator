@@ -1,5 +1,7 @@
 package org.sv.models;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,7 +10,7 @@ public class FacturaModel {
     private String concepto;
     private String rfcEmisor;
     private String rfcReceptor;
-    private String fecha;
+    private LocalDate fecha;
     private double total;
     private List<String> iglesias;
 
@@ -27,7 +29,7 @@ public class FacturaModel {
      * @param total Total de la factura.
      * @param iglesias Lista de iglesias que la usaron.
      */
-    public FacturaModel(String uuid, String concepto, String rfcEmisor, String rfcReceptor, String fecha, double total, List<String> iglesias) {
+    public FacturaModel(String uuid, String concepto, String rfcEmisor, String rfcReceptor, LocalDate fecha, double total, List<String> iglesias) {
         this.uuid = uuid;
         this.concepto = concepto;
         this.rfcEmisor = rfcEmisor;
@@ -46,13 +48,14 @@ public class FacturaModel {
      * @param fecha Fecha en que se realizó la factura.
      * @param total Total de la factura.
      */
-    public FacturaModel(String uuid, String concepto, String rfcEmisor, String rfcReceptor, String fecha, double total) {
+    public FacturaModel(String uuid, String concepto, String rfcEmisor, String rfcReceptor, LocalDate fecha, double total) {
         this.uuid = uuid;
         this.concepto = concepto;
         this.rfcEmisor = rfcEmisor;
         this.rfcReceptor = rfcReceptor;
         this.fecha = fecha;
         this.total = total;
+        this.iglesias = new ArrayList<>();
     }
 
     /**
@@ -61,6 +64,10 @@ public class FacturaModel {
      */
     public int getCantidadIglesias() {
         return iglesias.size();
+    }
+
+    public void addIglesiaALista(String iglesia) {
+        this.iglesias.add(iglesia);
     }
 
     // Getters & Setters
@@ -96,11 +103,11 @@ public class FacturaModel {
         this.rfcReceptor = rfcReceptor;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

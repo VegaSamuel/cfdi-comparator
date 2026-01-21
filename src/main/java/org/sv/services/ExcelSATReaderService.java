@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.sv.interfaces.IExcelReader;
 import org.sv.models.ExcelSATModel;
+import org.sv.utils.ReaderUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,12 +18,12 @@ public class ExcelSATReaderService implements IExcelReader<ExcelSATModel> {
     /**
      * Constantes del lugar de las columnas en el reporte de MiAdminXML.
      */
-    private static final int COL_UUID = 9;
-    private static final int COL_ESTADO = 0;
-    private static final int COL_CONCEPTO = 40;
-    private static final int COL_RFC_EMISOR = 11;
-    private static final int COL_RFC_RECEPTOR = 15;
-    private static final int COL_TOTAL = 27;
+    private static final int COL_UUID = 10;
+    private static final int COL_ESTADO = 1;
+    private static final int COL_CONCEPTO = 41;
+    private static final int COL_RFC_EMISOR = 12;
+    private static final int COL_RFC_RECEPTOR = 16;
+    private static final int COL_TOTAL = 28;
 
     /**
      * Valida si el archivo proporcionado tiene un formato correcto conforme a los reportes de MiAdminXML.
@@ -36,8 +37,8 @@ public class ExcelSATReaderService implements IExcelReader<ExcelSATModel> {
             Sheet sheet = wb.getSheetAt(0);
             Row header = sheet.getRow(0);
 
-            return header.getCell(0).getStringCellValue().equalsIgnoreCase("Estado SAT")
-                    && header.getCell(1).getStringCellValue().equalsIgnoreCase("Version");
+            return header.getCell(0).getStringCellValue().equalsIgnoreCase("Verificado ó Asoc.")
+                    && header.getCell(1).getStringCellValue().equalsIgnoreCase("Estado SAT");
         } catch (Exception e) {
             return false;
         }
@@ -56,6 +57,7 @@ public class ExcelSATReaderService implements IExcelReader<ExcelSATModel> {
         try (FileInputStream fis = new FileInputStream(file);
              Workbook wb = new XSSFWorkbook(fis)) {
             Sheet sheet = wb.getSheetAt(0);
+            ReaderUtils utils = new ReaderUtils();
 
             for (int i = 1; i < sheet.getLastRowNum(); i++) {
                 Row fila = sheet.getRow(i);
@@ -71,7 +73,7 @@ public class ExcelSATReaderService implements IExcelReader<ExcelSATModel> {
                             formatter.formatCellValue(fila.getCell(COL_CONCEPTO)),
                             formatter.formatCellValue(fila.getCell(COL_RFC_EMISOR)),
                             formatter.formatCellValue(fila.getCell(COL_RFC_RECEPTOR)),
-                            Integer.parseInt(formatter.formatCellValue(fila.getCell(COL_TOTAL)))
+                            utils.leerDouble(fila.getCell(COL_TOTAL))
                     );
 
                     facturas.add(factura);
